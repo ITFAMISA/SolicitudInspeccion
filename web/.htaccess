@@ -1,0 +1,14 @@
+# .htaccess - Colocar en la carpeta 'web'
+
+# Activar módulo de reescritura
+RewriteEngine On
+
+# Si el archivo o directorio existe, servirlo directamente
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Si no existe, redirigir al index.php con la URL como parámetro
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Opcional: Redirección automática desde raíz a index.php
+DirectoryIndex index.php
